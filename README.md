@@ -33,7 +33,7 @@ Before getting started, ensure you have the following installed:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/your-username/nft-marketplace.git
+   git clone https://github.com/devansh0112/nft-marketplace.git
    cd nft-marketplace
    ```
 
