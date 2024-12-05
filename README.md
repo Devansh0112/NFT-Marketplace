@@ -1,80 +1,82 @@
-# 🏗 Scaffold-ETH 2
 
-<h4 align="center">
-  <a href="https://docs.scaffoldeth.io">Documentation</a> |
-  <a href="https://scaffoldeth.io">Website</a>
-</h4>
+# NFT Marketplace
 
-🧪 An open-source, up-to-date toolkit for building decentralized applications (dapps) on the Ethereum blockchain. It's designed to make it easier for developers to create and deploy smart contracts and build user interfaces that interact with those contracts.
+This project is a decentralized NFT marketplace built using Scaffold-ETH. It allows users to create their own NFT collections, view them, and interact with them in a decentralized environment.
 
-⚙️ Built using NextJS, RainbowKit, Foundry, Wagmi, Viem, and Typescript.
+## Features
 
-- ✅ **Contract Hot Reload**: Your frontend auto-adapts to your smart contract as you edit it.
-- 🪝 **[Custom hooks](https://docs.scaffoldeth.io/hooks/)**: Collection of React hooks wrapper around [wagmi](https://wagmi.sh/) to simplify interactions with smart contracts with typescript autocompletion.
-- 🧱 [**Components**](https://docs.scaffoldeth.io/components/): Collection of common web3 components to quickly build your frontend.
-- 🔥 **Burner Wallet & Local Faucet**: Quickly test your application with a burner wallet and local faucet.
-- 🔐 **Integration with Wallet Providers**: Connect to different wallet providers and interact with the Ethereum network.
+- **NFT Collection Creation**: Users can create their own NFT collections from images stored at IPFS URLs.
+- **Decentralized Architecture**: The application is fully decentralized with no backend.
+- **Smart Contract Deployment**: Each NFT collection deploys a new smart contract on-chain.
+- **Wallet Integration**: Users can connect their Ethereum wallet to interact with the platform.
 
-![Debug Contracts tab](https://github.com/scaffold-eth/scaffold-eth-2/assets/55535804/b237af0c-5027-4849-a5c1-2e31495cccb1)
+## Tech Stack
 
-## Requirements
+- **Scaffold-ETH**: A framework for building Ethereum dApps.
+- **Foundry**: For smart contract development and testing.
+- **OpenZeppelin**: Secure and reusable smart contract templates.
+- **Next.js**: React-based framework for building the frontend.
+- **Wagmi**: Library for wallet integration and blockchain interaction.
+- **IPFS**: Decentralized storage for images and metadata.
 
-Before you begin, you need to install the following tools:
+## Prerequisites
 
-- [Node (>= v18.18)](https://nodejs.org/en/download/)
-- Yarn ([v1](https://classic.yarnpkg.com/en/docs/install/) or [v2+](https://yarnpkg.com/getting-started/install))
-- [Git](https://git-scm.com/downloads)
+Before getting started, ensure you have the following installed:
 
-## Quickstart
+- Node.js (v14 or higher)
+- Yarn package manager
+- Ethereum wallet (e.g., MetaMask) for testing transactions
 
-To get started with Scaffold-ETH 2, follow the steps below:
+## Getting Started
 
-1. Install dependencies if it was skipped in CLI:
+### Installation
 
-```
-cd my-dapp-example
-yarn install
-```
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/nft-marketplace.git
+   cd nft-marketplace
+   ```
 
-2. Run a local network in the first terminal:
+2. Install dependencies:
+   ```bash
+   yarn install
+   ```
 
-```
-yarn chain
-```
+### Running the Application
 
-This command starts a local Ethereum network using Foundry. The network runs on your local machine and can be used for testing and development. You can customize the network configuration in `packages/foundry/foundry.toml`.
+1. Start a local Ethereum network:
+   ```bash
+   yarn chain
+   ```
 
-3. On a second terminal, deploy the test contract:
+2. Deploy the smart contracts:
+   ```bash
+   yarn deploy
+   ```
 
-```
-yarn deploy
-```
+3. Start the frontend application:
+   ```bash
+   yarn start
+   ```
 
-This command deploys a test smart contract to the local network. The contract is located in `packages/foundry/contracts` and can be modified to suit your needs. The `yarn deploy` command uses the deploy script located in `packages/foundry/script` to deploy the contract to the network. You can also customize the deploy script.
+4. Open your browser and navigate to [http://localhost:3000](http://localhost:3000).
 
-4. On a third terminal, start your NextJS app:
+## Usage
 
-```
-yarn start
-```
+- **Connect Wallet**: Use the "Connect Wallet" button to connect your Ethereum wallet.
+- **Create NFTs**: Upload images and mint NFTs directly from the platform.
+- **View Collections**: Browse through created NFT collections.
 
-Visit your app on: `http://localhost:3000`. You can interact with your smart contract using the `Debug Contracts` page. You can tweak the app config in `packages/nextjs/scaffold.config.ts`.
+## Future Enhancements
 
-Run smart contract test with `yarn foundry:test`
+- **On-chain Transactions**: Add smart contract interactions for on-chain payments and tipping.
+- **Enhanced Security**: Improve security features for decentralized content sharing.
+- **Video Uploads**: Allow users to upload videos directly through the platform.
 
-- Edit your smart contracts in `packages/foundry/contracts`
-- Edit your frontend homepage at `packages/nextjs/app/page.tsx`. For guidance on [routing](https://nextjs.org/docs/app/building-your-application/routing/defining-routes) and configuring [pages/layouts](https://nextjs.org/docs/app/building-your-application/routing/pages-and-layouts) checkout the Next.js documentation.
-- Edit your deployment scripts in `packages/foundry/script`
+## Troubleshooting
 
+- If you encounter issues related to the `make` command on Windows, ensure that you have installed `mingw32-make` or use Windows Subsystem for Linux (WSL) to provide a Unix-like environment.
 
-## Documentation
+---
 
-Visit our [docs](https://docs.scaffoldeth.io) to learn how to start building with Scaffold-ETH 2.
-
-To know more about its features, check out our [website](https://scaffoldeth.io).
-
-## Contributing to Scaffold-ETH 2
-
-We welcome contributions to Scaffold-ETH 2!
-
-Please see [CONTRIBUTING.MD](https://github.com/scaffold-eth/scaffold-eth-2/blob/main/CONTRIBUTING.md) for more information and guidelines for contributing to Scaffold-ETH 2.
+This README file provides an overview of your project, outlines its features, describes the tech stack, and gives instructions on how to set up and run the application. Adjust any specific details or URLs to match your project's setup.
