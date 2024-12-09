@@ -1,10 +1,17 @@
 "use client";
 
+import { useState } from "react";
 import CreateNFT from "./CreateNFT";
+import ReadNFTPage from "./ReadNFTPage";
 import type { NextPage } from "next";
-import { useAccount } from "wagmi";
 
 const Home: NextPage = () => {
+  const [selectedPage, setSelectedPage] = useState<string>("create");
+
+  const handleMenuClick = (page: string) => {
+    setSelectedPage(page);
+  };
+
   return (
     <>
       <div className="drawer">
@@ -23,16 +30,16 @@ const Home: NextPage = () => {
         </label>
         <div className="drawer-content">
           {/* Page content here */}
-          <CreateNFT />
+          {selectedPage === "create" ? <CreateNFT /> : <ReadNFTPage />}
         </div>
         <div className="drawer-side">
           <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
           <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
             {/* Sidebar content here */}
-            <li>
+            <li onClick={() => handleMenuClick("create")}>
               <a>Create NFTs</a>
             </li>
-            <li>
+            <li onClick={() => handleMenuClick("read")}>
               <a>View Collections</a>
             </li>
             <li>
