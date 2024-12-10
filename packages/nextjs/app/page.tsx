@@ -3,6 +3,7 @@
 import { useState } from "react";
 import CreateNFT from "./CreateNFT";
 import ReadNFTPage from "./ReadNFTPage";
+import AuctionNFTsPage from "./AuctionPage";  // Import the AuctionNFTsPage component
 import type { NextPage } from "next";
 
 const Home: NextPage = () => {
@@ -30,7 +31,13 @@ const Home: NextPage = () => {
         </label>
         <div className="drawer-content">
           {/* Page content here */}
-          {selectedPage === "create" ? <CreateNFT /> : <ReadNFTPage />}
+          {selectedPage === "create" ? (
+            <CreateNFT />
+          ) : selectedPage === "read" ? (
+            <ReadNFTPage />
+          ) : (
+            <AuctionNFTsPage />  // Show AuctionNFTsPage if selected
+          )}
         </div>
         <div className="drawer-side">
           <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
@@ -42,7 +49,7 @@ const Home: NextPage = () => {
             <li onClick={() => handleMenuClick("read")}>
               <a>View Collections</a>
             </li>
-            <li>
+            <li onClick={() => handleMenuClick("auction")}> {/* Add Auction link */}
               <a>NFT Auctions</a>
             </li>
           </ul>
