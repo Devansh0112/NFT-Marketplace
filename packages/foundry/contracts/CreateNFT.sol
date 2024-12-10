@@ -25,6 +25,7 @@ contract CreateNFT is ERC721URIStorage {
         address currentBidder;
         uint256 auctionEndTime;
         bool isActive;
+        string imageUri;
     }
 
     NFT[] public nfts;
@@ -123,11 +124,12 @@ contract CreateNFT is ERC721URIStorage {
         revert("NFT not found");
     }
 
-    // Auction functionality
 
     function createAuction(uint256 tokenId, uint256 startingPrice, uint256 duration) public {
         require(ownerOf(tokenId) == msg.sender, "You must be the owner of the NFT");
         require(auctions[tokenId].isActive == false, "Auction already active for this NFT");
+
+        NFT memory currentNft = getNFTByTokenId(tokenId);
 
         auctions[tokenId] = Auction({
             tokenId: tokenId,
@@ -136,11 +138,25 @@ contract CreateNFT is ERC721URIStorage {
             currentBid: startingPrice,
             currentBidder: address(0),
             auctionEndTime: block.timestamp + duration,
-            isActive: true
+            isActive: true,
+            imageUri: currentNft.ipfsUri
         });
 
         emit AuctionCreated(tokenId, startingPrice, auctions[tokenId].auctionEndTime);
     }
+
+    function getAllAuctions() public view returns (Auction[] memory) {
+    Auction[] memory allAuctions = new Auction[](nfts.length);
+    uint256 index = 0;
+    for (uint256 i = 0; i < nfts.length; i++) {
+        if (auctions[nfts[i].tokenId].isActive) {
+            allAuctions[index] = auctions[nfts[i].tokenId];
+            index++;
+        }
+    }
+    return allAuctions;
+}
+
 
     function placeBid(uint256 tokenId) public payable {
         Auction storage auction = auctions[tokenId];
@@ -149,7 +165,6 @@ contract CreateNFT is ERC721URIStorage {
         require(block.timestamp < auction.auctionEndTime, "Auction has ended");
         require(msg.value > auction.currentBid, "Bid must be higher than current bid");
 
-        // Refund previous bidder
         if (auction.currentBidder != address(0)) {
             payable(auction.currentBidder).transfer(auction.currentBid);
         }
@@ -170,9 +185,7 @@ contract CreateNFT is ERC721URIStorage {
         auction.isActive = false;
 
         if (auction.currentBidder != address(0)) {
-            // Transfer NFT to highest bidder
             _transfer(auction.seller, auction.currentBidder, tokenId);
-            // Transfer the winning bid to the seller
             payable(auction.seller).transfer(auction.currentBid);
             emit AuctionEnded(tokenId, auction.currentBidder, auction.currentBid);
         }
