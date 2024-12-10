@@ -24,10 +24,7 @@ const AuctionPage: React.FC = () => {
     functionName: "getAllAuctions",
   });
 
-  const { writeContractAsync: placeBid } = useScaffoldWriteContract({
-    contractName: "CreateNFT",
-    functionName: "placeBid",
-  });
+  const { writeContractAsync: placeBid } = useScaffoldWriteContract("CreateNFT");
 
   useEffect(() => {
     if (allAuctions) {
@@ -42,9 +39,9 @@ const AuctionPage: React.FC = () => {
 
   const handleBidSubmit = async (tokenId: bigint) => {
     if (!bidAmount || Number(bidAmount) <= 0) return;
-
     try {
       await placeBid({
+        functionName: "placeBid",
         args: [BigInt(tokenId)],
         value: BigInt(bidAmount),
       });
