@@ -1,5 +1,5 @@
 import * as chains from "viem/chains";
-import { virtual_mainnet } from "./utils/scaffold-eth/customChains";
+import { virtual_optimistic_ethereum } from "./utils/scaffold-eth/customChains";
 
 export type ScaffoldConfig = {
   targetNetworks: readonly chains.Chain[];
@@ -11,7 +11,7 @@ export type ScaffoldConfig = {
 
 const scaffoldConfig = {
   // The networks on which your DApp is live
-  targetNetworks: [virtual_mainnet],
+  targetNetworks: [virtual_optimistic_ethereum],
 
   // The interval at which your front-end polls the RPC servers for new data
   // it has no effect if you only target the local network (default is 4000)

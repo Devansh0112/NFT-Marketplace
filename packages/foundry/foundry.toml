@@ -5,8 +5,8 @@ libs = ['lib']
 fs_permissions = [{ access = "read-write", path = "./"}]
 
 [rpc_endpoints]
-virtualTestNet = "https://virtual.mainnet.rpc.tenderly.co/cc490e44-5d2b-45f9-a670-48f3689cd6a5"
-default_network = "https://virtual.mainnet.rpc.tenderly.co/cc490e44-5d2b-45f9-a670-48f3689cd6a5"
+virtualTestNet = "https://virtual.optimism.rpc.tenderly.co/ca6a1903-42bb-48cb-a41e-bd827a98a90d"
+default_network = "https://virtual.optimism.rpc.tenderly.co/ca6a1903-42bb-48cb-a41e-bd827a98a90d"
 localhost = "http://127.0.0.1:8545"
 
 mainnet = "https://eth-mainnet.alchemyapi.io/v2/${ALCHEMY_API_KEY}"

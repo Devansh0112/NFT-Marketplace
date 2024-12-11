@@ -1,16 +1,16 @@
 import { defineChain, Hex } from "viem";
 
-export const virtual_mainnet = defineChain({
-  id: 1,
-  name: 'Virtual Mainnet',
-  nativeCurrency: { name: 'ETH', symbol: 'ETH', decimals: 18 },
+export const virtual_optimistic_ethereum = defineChain({
+  id: 10,
+  name: 'Virtual Optimistic Ethereum',
+  nativeCurrency: { name: 'VETH', symbol: 'vETH', decimals: 18 },
   rpcUrls: {
-    default: { http: ['wss://virtual.mainnet.rpc.tenderly.co/6a7f5674-4952-4e99-97e3-a34c1925a615'] }
+    default: { http: ['https://virtual.optimism.rpc.tenderly.co/ca6a1903-42bb-48cb-a41e-bd827a98a90d'] }
   },
   blockExplorers: {
     default: {
       name: 'Tenderly Explorer',
-      url: 'https://virtual.mainnet.rpc.tenderly.co/cc490e44-5d2b-45f9-a670-48f3689cd6a5'
+      url: 'https://virtual.optimism.rpc.tenderly.co/d63c9bd8-9d47-4cfe-8389-9e9659342b86'
     }
   },
 });
