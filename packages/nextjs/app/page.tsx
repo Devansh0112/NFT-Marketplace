@@ -3,7 +3,7 @@
 import { useState } from "react";
 import CreateNFT from "./CreateNFT";
 import ReadNFTPage from "./ReadNFTPage";
-import AuctionNFTsPage from "./AuctionPage";  // Import the AuctionNFTsPage component
+import AuctionNFTsPage from "./AuctionPage";
 import type { NextPage } from "next";
 
 const Home: NextPage = () => {

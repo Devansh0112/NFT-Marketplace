@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useScaffoldReadContract, useScaffoldWriteContract } from "~~/hooks/scaffold-eth";
+import { useAccount } from "wagmi";
 
 interface NFT {
   owner: string;
@@ -17,11 +18,13 @@ const ReadNFTPage: React.FC = () => {
   const [selectedTokenId, setSelectedTokenId] = useState<bigint | null>(null);
   const [startingPrice, setStartingPrice] = useState("");
   const [duration, setDuration] = useState("");
+  const { address: currentAddress } = useAccount();
 
   // Read NFTs
   const { data: allNfts } = useScaffoldReadContract({
     contractName: "CreateNFT",
-    functionName: "getAllNfts",
+    functionName: "getNFTsByOwner",
+    args: [currentAddress],
   });
 
   // Write Contract Hook
